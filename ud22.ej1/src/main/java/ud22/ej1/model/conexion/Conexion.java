@@ -12,16 +12,16 @@ import javax.swing.JOptionPane;
 public class Conexion {
 
 	static String bd = "cliente";
-	static String login;
-	static String password;
+	static String login = "";
+	static String password = "";
 	static String url = "jdbc:mysql://192.168.3.9:3306/" + bd + "?useTimezone=true&serverTimezone=UTC";
 
 	Connection conn = null;
 
 	public Conexion() {
 		try {
-			login = JOptionPane.showInputDialog("Introduce tu nombre de usuario");
-			password = JOptionPane.showInputDialog("Introduce tu contraseña");
+			if(login.isEmpty())login = JOptionPane.showInputDialog("Introduce tu nombre de usuario");
+			if(password.isEmpty())password = JOptionPane.showInputDialog("Introduce tu contraseña");
 			// obtenemos el driver de para mysql
 			Class.forName("com.mysql.cj.jdbc.Driver");
 			// obtenemos la conexion
